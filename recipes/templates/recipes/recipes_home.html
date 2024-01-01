@@ -1,0 +1,140 @@
+<!--load all static files before creating HTML page-->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="../../static/recipes/css/style.css" />
+        <!--font awesome reference location to get directory-->
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        />
+        <!--Icon Scout CDN-->
+
+        <title>Welcome to the Recipe App</title>
+    </head>
+    <body>
+        <div class="banner">
+            <div class="navbar">
+                <img src="{% static 'recipes/images/logo.png' %}" alt="logo" />
+                <nav class="navigation row">
+                    <ul class="primary-links row">
+                        <li><a href="{% url 'recipes:home' %}">Home</a></li>
+                        <li><a href="{% url 'recipes:list' %}">Recipes</a></li>
+                        <li><a href="#">Create Recipe</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="{% url 'recipes:records' %}">Search</a></li>
+                        <li>
+                            {% if request.user.is_authenticated %}
+                            <a href="{% url 'logout' %}">Logout</a>
+                            {% else %}
+                            <a href="{%url 'login' %}">Login</a>
+                            {% endif %}
+                        </li>
+                    </ul>
+                </nav>
+                <ul class="secondary-links row">
+                    <li>
+                        <a
+                            href="https://facebook.com"
+                            target="_blank"
+                            rel="”noreferrer”"
+                            ><i
+                                class="fa fa-facebook-official fa-lg"
+                                aria-hidden="true"
+                            ></i
+                        ></a>
+                    </li>
+                    <li>
+                        <a
+                            href="https://instagram.com"
+                            target="_blank"
+                            rel="”noreferrer”"
+                            ><i
+                                class="fa fa-instagram fa-lg"
+                                aria-hidden="true"
+                            ></i
+                        ></a>
+                    </li>
+                    <li>
+                        <a
+                            href="https://twitter.com"
+                            target="_blank"
+                            rel="”noreferrer”"
+                            ><i
+                                class="fa fa-twitter-square fa-lg"
+                                aria-hidden="true"
+                            ></i
+                        ></a>
+                    </li>
+                </ul>
+            </div>
+
+            <!--End of Navigation-->
+
+            <!--Main Content Section-->
+            <section class="main">
+                <div class="container row">
+                    <div class="main-content">
+                        <div class="content">
+                            <div class="recipe row">
+                                <img
+                                    src="{% static 'recipes/images/notebook.png' %}"
+                                    alt="Menu"
+                                />Hot Recipes
+                            </div>
+
+                            <h1>Spicy Delicious Chicken Wings?</h1>
+                            <p id="recipe-detail">
+                                Click the View Recipes button to find out more
+                                about how great recipes are made
+                            </p>
+                            <div class="sub-containter row">
+                                <div class="time row">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="24"
+                                        height="24"
+                                        viewBox="0 0 24 24"
+                                        style="fill: rgba(255, 255, 255, 1)"
+                                    >
+                                        <path
+                                            d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"
+                                        ></path>
+                                        <path
+                                            d="M13 7h-2v5.414l3.293 3.293 1.414-1.414L13 11.586z"
+                                        ></path>
+                                    </svg>
+                                    <p>30 minutes</p>
+                                </div>
+                                <div class="time row">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="24"
+                                        height="24"
+                                        viewBox="0 0 24 24"
+                                        style="fill: rgba(255, 255, 255, 1)"
+                                    >
+                                        <path
+                                            d="M21 10H3a1 1 0 0 0-1 1 10 10 0 0 0 5 8.66V21a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1.34A10 10 0 0 0 22 11a1 1 0 0 0-1-1zM9 9V7.93a4.51 4.51 0 0 0-1.28-3.15A2.49 2.49 0 0 1 7 3V2H5v1a4.51 4.51 0 0 0 1.28 3.17A2.49 2.49 0 0 1 7 7.93V9zm4 0V7.93a4.51 4.51 0 0 0-1.28-3.15A2.49 2.49 0 0 1 11 3V2H9v1a4.51 4.51 0 0 0 1.28 3.15A2.49 2.49 0 0 1 11 7.93V9zm4 0V7.93a4.51 4.51 0 0 0-1.28-3.15A2.49 2.49 0 0 1 15 3V2h-2v1a4.51 4.51 0 0 0 1.28 3.15A2.49 2.49 0 0 1 15 7.93V9z"
+                                        ></path>
+                                    </svg>
+                                    <p>Chicken</p>
+                                </div>
+                            </div>
+
+                            <div class="main-btn row">
+                                <a href="{% url 'recipes:list' %}"
+                                    >View Recipes
+                                    <i class="fa fa-play" aria-hidden="true"></i
+                                ></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </body>
+</html>

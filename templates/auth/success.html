@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            rel="stylesheet"
+            href="{% static 'recipes/css/login_out_styles.css' %}"
+        />
+        <title>Logout</title>
+    </head>
+    <body>
+        <div class="wrapper">
+            <h2>You have successfully logged out.</h2>
+            <button type="submit" class="btn" id="btn">Login</button>
+            <h4 class="login-text">Click the button to login again</h4>
+        </div>
+        <script>
+            document
+                .getElementById("btn")
+                .addEventListener("click", redirectFunction);
+
+            function redirectFunction() {
+                window.location.replace("{%url 'login' %}");
+            }
+        </script>
+    </body>
+</html>

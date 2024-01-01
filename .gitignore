@@ -1,0 +1,5 @@
+# TEst backup files
+*.bak 
+
+#Database
+*.sqlite3

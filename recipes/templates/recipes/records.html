@@ -1,0 +1,194 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="{% static 'recipes/css/style.css' %}" />
+        <!--google icons reference location to get directory-->
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+        />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+        />
+
+        <title>Recipe</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <style>
+            .recipe-detail-container {
+                width: 100%;
+                height: 100vh;
+                background-color: #fff;
+            }
+
+            .recipe-detail-banner {
+                width: 100%;
+                height: 50vh;
+                background-image: linear-gradient(
+                        rgba(149, 21, 10, 0.75),
+                        rgba(149, 21, 10, 0.75)
+                    ),
+                    url(../../static/recipes/images/recipe_list_page_pic.jpg);
+                background-size: cover;
+                background-position: center;
+            }
+
+            .recipe-header-container {
+                width: 100%;
+                margin: auto;
+                padding: 5% 0 2% 0;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .recipe-header-container h2 {
+                margin-left: 5px;
+                font-weight: 600;
+                font-size: 2em;
+                color: #fff;
+            }
+
+            .flex-row {
+                display: flex;
+            }
+
+            .recipe-detail-navbar {
+                font-size: 1.3rem;
+                
+                margin-left: 10px;
+                padding: 35px 0 10px 0;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            .recipe-detail-navbar ul li {
+                list-style: none;
+                display: inline-block;
+                margin: 0 10px;
+            }
+
+            .recipe-detail-navbar ul li a {
+                list-style: none;
+                text-decoration: none;
+                color: #fff;
+                
+            }
+
+            .records-form {
+                font-size: 1.1rem;
+                color: #fff;
+                display: flex;
+                justify-content: space-around;
+                gap: 5px;
+                margin-right: 20px;
+                align-items: center;
+            }
+
+            .records-container {
+                width: 90%;
+                height: 300px;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                justify-items: center;
+
+                gap: 5rem;
+                margin: 35vh auto;
+            }
+
+
+            .search-btn {
+                width: 120px;
+                height: 2.375rem;
+                font-weight: 600;
+                font-size: 1rem;
+                background: #fff;
+                padding: 0.25em;
+                
+                
+                border-radius: 5px;
+                border: none;
+              
+            }
+
+            .search-btn:hover {
+                background: #683110;
+                color: #fff;
+            }
+
+            .input-box {
+                width: 200px;
+                color: #495057;
+                height: 2.375rem;
+                padding: 0.375rem 0.75rem;
+                border-radius: 0.25rem;
+                border: 1px solid #000;
+                background-clip: padding-box;
+                transition: border-color 0.15s ease-in-out,
+                    box-shadow 0.15s ease-in-out;
+                margin-right: 1rem;
+            }
+
+            .chart-input {
+                margin-right: 1.6rem;
+            }
+
+            .input-box::placeholder {
+                padding: 1px;
+                font-size: 1rem;
+            }
+
+            .ingredient-input:focus,
+            .ingredient-input:active {
+                border-color: #fff;
+                background-color: transparent;
+                color: #fff;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="recipe-detail-container">
+            <div class="recipe-detail-banner">
+                <div class="recipe-header-container">
+                    <nav class="recipe-detail-navbar">
+                        <ul class="flex-row">
+                            <li>
+                                <a href="{% url 'recipes:home' %}">Home</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'recipes:list' %}">Recipes</a>
+                            </li>
+                            <li><a href="#">Create Recipe</a></li>
+                            <li><a href="{%url 'logout' %}">Logout</a></li>
+                        </ul>
+                    </nav>
+
+                    <div class="records-form">
+                        <form action="" method="POST">
+                            {% csrf_token %} {{form}}
+                            <button class="search-btn" type="submit">Search</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="records-container">
+                    <div>
+                        {% if recipes_df %} {{recipes_df|safe}}
+                    </div>
+                    <div>
+                        <img src="data:image/png;base64, {{chart|safe}}" />
+                    </div>
+
+                    
+                    {% else %}
+                    <h3>no data</h3>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    </body>
+</html>
