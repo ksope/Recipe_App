@@ -16,7 +16,7 @@ def home(request):
 
 #define function-based view - records()
 #keep protected
-#@login_required
+@login_required
 def records(request):
    #create an instance of RecipeSearchForm defined in recipes/forms.py
    form = RecipeSearchForm(request.POST or None)
