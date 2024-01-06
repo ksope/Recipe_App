@@ -5,7 +5,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="../../static/recipes/css/style.css" />
+        <link rel="stylesheet" href="{% static 'recipes/css/style.css' %}" />
         <!--font awesome reference location to get directory-->
         <link
             rel="stylesheet"
@@ -25,7 +25,9 @@
                         <li><a href="{% url 'recipes:list' %}">Recipes</a></li>
                         <li><a href="#">Create Recipe</a></li>
                         <li><a href="#">Contact</a></li>
-                        <li><a href="{% url 'recipes:records' %}">Search</a></li>
+                        <li>
+                            <a href="{% url 'recipes:records' %}">Search</a>
+                        </li>
                         <li>
                             {% if request.user.is_authenticated %}
                             <a href="{% url 'logout' %}">Logout</a>
