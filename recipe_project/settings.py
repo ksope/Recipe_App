@@ -10,22 +10,25 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
-import os
+
 from pathlib import Path
 import cloudinary
-from dotenv import load_dotenv
+
 
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+from dotenv import load_dotenv
+import os
+load_dotenv()
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY','secret_key')
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY','SECRET_KEY')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -152,7 +155,7 @@ DATABASES['default'].update(db_from_env)
 
 #cloudinary configuration
 cloudinary.config( 
-  cloud_name = "dayfoklwx", 
-  api_key = "519226614678323", 
-  api_secret = "_6nrLh8ISyB2dRKyExv9xWl0h5I" 
+  cloud_name = os.environ.get('CLOUD_NAME'), 
+  api_key = os.environ.get('API_KEY'), 
+  api_secret = os.environ.get('API_SECRET') 
 )
