@@ -1,5 +1,6 @@
 from django.db import models
 from django.shortcuts import reverse
+from cloudinary.models import CloudinaryField
 
 # Create your models here.
 class Recipe(models.Model):
@@ -7,7 +8,7 @@ class Recipe(models.Model):
     description = models.TextField(default='This recipe promises not to dissappoint')
     ingredients=models.CharField(max_length=255)
     cooking_time=models.PositiveIntegerField(help_text= 'in minutes')
-    pic = models.ImageField(upload_to='recipes', default='no_picture.jpg')
+    pic = CloudinaryField('pic')
 
     
 

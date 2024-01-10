@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 import os
 from pathlib import Path
-
+import cloudinary
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -148,7 +148,7 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 MEDIA_URL = '/media/'
 MEDIA_ROOT= BASE_DIR / 'media'
 #use cloudinary as storage for uploaded media files
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+#DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # Heroku: Update database configuration from $DATABASE_URL.
 import dj_database_url
