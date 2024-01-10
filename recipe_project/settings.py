@@ -15,11 +15,6 @@ from pathlib import Path
 import cloudinary
 from dotenv import load_dotenv
 
-load_dotenv()
-api_key = os.getenv("API_KEY")
-api_secret = os.getenv("API_SECRET")
-cloud_name = os.getenv("CLOUD_NAME")
-secret_key = os.getenv("SECRET_KEY")
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -157,7 +152,7 @@ DATABASES['default'].update(db_from_env)
 
 #cloudinary configuration
 cloudinary.config( 
-  cloud_name = "ayfoklwx", 
+  cloud_name = "dayfoklwx", 
   api_key = "519226614678323", 
   api_secret = "_6nrLh8ISyB2dRKyExv9xWl0h5I" 
 )
