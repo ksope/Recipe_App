@@ -157,7 +157,7 @@ DATABASES['default'].update(db_from_env)
 
 #cloudinary configuration
 cloudinary.config( 
-  cloud_name = cloud_name, 
-  api_key = api_key, 
-  api_secret = api_secret 
+  cloud_name = ayfoklwx, 
+  api_key = 519226614678323, 
+  api_secret = _6nrLh8ISyB2dRKyExv9xWl0h5I 
 )
