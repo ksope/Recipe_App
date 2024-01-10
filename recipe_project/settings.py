@@ -12,6 +12,16 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 import os
 from pathlib import Path
+import cloudinary
+
+from dotenv import load_dotenv
+
+load_dotenv()
+api_key = os.getenv("API_KEY")
+api_secret = os.getenv("API_SECRET")
+cloud_name = os.getenv("CLOUD_NAME")
+secret_key = os.getenv("SECRET_KEY")
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,7 +31,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY','django-insecure-9nb6kz#2lxvmog_o20idpmkf1pno@2#%uk*ca!p$um(-2_g^8e')
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY','secret_key')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -39,6 +49,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    'cloudinary_storage',
+    'cloudinary',
     #recipe-related apps
     'recipes',
 ]
@@ -136,9 +148,17 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 #user generated media files
 MEDIA_URL = '/media/'
 MEDIA_ROOT= BASE_DIR / 'media'
-
+#use cloudinary as storage for uploaded media files
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # Heroku: Update database configuration from $DATABASE_URL.
 import dj_database_url
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
+
+#cloudinary configuration
+cloudinary.config( 
+  cloud_name = "cloud_name", 
+  api_key = "api_key", 
+  api_secret = "api_secret" 
+)
