@@ -14,22 +14,24 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 import cloudinary
 
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
+from dotenv import load_dotenv
 import os
-from decouple import config
+load_dotenv()
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('DJANGO_SECRET_KEY','SECRET_KEY')
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY','SECRET_KEY')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['https://immense-coast-65627-c384bc3cd247.herokuapp.com', '*']
 
@@ -151,11 +153,9 @@ db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
 
 
-CLOUDINARY_STORAGE = {
-    'cloud_name' : config('CLOUDINARY_CLOUD_NAME'),
-    'api_key' : config('CLOUDINARY_API_KEY'),
-    'api_secret' : config('CLOUDINARY_API_SECRET')
-}
-
 #cloudinary configuration
-cloudinary.config(**CLOUDINARY_STORAGE)
+cloudinary.config( 
+  cloud_name = dayfoklwx, 
+  api_key = 519226614678323, 
+  api_secret = _6nrLh8ISyB2dRKyExv9xWl0h5I
+)
