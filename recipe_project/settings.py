@@ -32,7 +32,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY','SECRET_KEY')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['https://immense-coast-65627-c384bc3cd247.herokuapp.com', '*']
 
@@ -157,5 +157,6 @@ DATABASES['default'].update(db_from_env)
 cloudinary.config( 
   cloud_name = str(os.environ.get('CLOUD_NAME')), 
   api_key = str(os.environ.get('API_KEY')), 
-  api_secret = str(os.environ.get('API_SECRET'))
+  api_secret = str(os.environ.get('API_SECRET')),
+  secure = True
 )
