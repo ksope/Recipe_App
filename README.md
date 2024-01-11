@@ -33,7 +33,7 @@ Run the local server
 python manage.py runserver
 
 Demo
-Login with username: "user" and password: "c@reerF0undry"
+Login with username: "user" and password: "Secret01"
 Click on a recipe tile to see its details
 Click on the "Records" tab to search recipes by Ingredient (and view either Bar, Pie or Line charts).
 
