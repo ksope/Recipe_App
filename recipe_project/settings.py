@@ -153,9 +153,16 @@ import dj_database_url
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
 
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME' : str(os.getenv('CLOUDINARY_CLOUD_NAME')),
+    'API_KEY' : str(os.getenv('CLOUDINARY_API_KEY')),
+    'API_SECRET' : str(os.getenv('CLOUDINARY_API_SECRET'))
+}
+
 #cloudinary configuration
 cloudinary.config( 
-  cloud_name = "dayfoklwx", 
-  api_key = "519226614678323", 
-  api_secret = "_6nrLh8ISyB2dRKyExv9xWl0h5I",
+  cloud_name = CLOUDINARY_STORAGE['CLOUD_NAME'], 
+  api_key = CLOUDINARY_STORAGE['API_KEY'], 
+  api_secret = CLOUDINARY_STORAGE['API_SECRET']
 )
