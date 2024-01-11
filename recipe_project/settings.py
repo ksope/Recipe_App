@@ -155,7 +155,7 @@ DATABASES['default'].update(db_from_env)
 
 #cloudinary configuration
 cloudinary.config( 
-  cloud_name = os.environ.get('CLOUD_NAME'), 
-  api_key = os.environ.get('API_KEY'), 
-  api_secret = os.environ.get('API_SECRET')
+  cloud_name = str(os.environ.get('CLOUD_NAME')), 
+  api_key = str(os.environ.get('API_KEY')), 
+  api_secret = str(os.environ.get('API_SECRET'))
 )
