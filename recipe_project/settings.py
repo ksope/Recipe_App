@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import cloudinary
+from decouple import config
 
 
 
@@ -30,9 +31,13 @@ load_dotenv()
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY','SECRET_KEY')
 
+CLOUDINARY_API_KEY = config('CLOUDINARY_API_KEY')
+CLOUDINARY_API_SECRET = config('CLOUDINARY_API_SECRET')
+CLOUDINARY_CLOUD_NAME = config('CLOUDINARY_CLOUD_NAME')
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['https://immense-coast-65627-c384bc3cd247.herokuapp.com', '*']
 
@@ -154,15 +159,9 @@ db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
 
 
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME' : str(os.getenv('CLOUDINARY_CLOUD_NAME')),
-    'API_KEY' : str(os.getenv('CLOUDINARY_API_KEY')),
-    'API_SECRET' : str(os.getenv('CLOUDINARY_API_SECRET'))
-}
-
 #cloudinary configuration
 cloudinary.config( 
-  cloud_name = CLOUDINARY_STORAGE['CLOUD_NAME'], 
-  api_key = CLOUDINARY_STORAGE['API_KEY'], 
-  api_secret = CLOUDINARY_STORAGE['API_SECRET']
+  cloud_name = CLOUDINARY_CLOUD_NAME, 
+  api_key = CLOUDINARY_API_KEY, 
+  api_secret = CLOUDINARY_API_SECRE
 )
