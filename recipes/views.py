@@ -16,7 +16,7 @@ def home(request):
 
 #define function-based view - records()
 #keep protected
-@login_required
+#@login_required
 def records(request):
    #create an instance of RecipeSearchForm defined in recipes/forms.py
    form = RecipeSearchForm(request.POST or None)
@@ -60,11 +60,12 @@ def records(request):
    return render(request, 'recipes/records.html', context)
 
 # Create recipe class based view
-class RecipeListView(LoginRequiredMixin, ListView):           #class-based “protected” view
+# class RecipeListView(LoginRequiredMixin, ListView)
+class RecipeListView(ListView):           #class-based “protected” view
    model = Recipe                         #specify model
    template_name = 'recipes/main.html'    #specify template 
 
-class RecipeDetailView(LoginRequiredMixin, DetailView):                   #class-based “protected” view
+class RecipeDetailView(DetailView):                   #class-based “protected” view
    model = Recipe                                        #specify model
    template_name = 'recipes/detail.html'                 #specify template
 
